@@ -1,27 +1,18 @@
-import { useAppSelector, useAppDispatch } from '../../hooks/storeHooks/storeHooks'
-import { decrement, increment } from '../../redux/slices/counter/counterSlice'
+import ContactListHeader from "@/components/contactList/contacListHeader.tsx/contactListHeader"
+import ContactLists from "@/components/contactList/contactLists/contactLists"
+import Contacts from "@/components/contactList/contacts/contacts"
+
 
 const ContactList = () => {
-  const count = useAppSelector((state) => state.counter.value)
-  const dispatch = useAppDispatch()
+
 
   return (
-    <div>
-      <div>
-        <button
-          aria-label="Increment value"
-          onClick={() => dispatch(increment())}
-        >
-          Increment
-        </button>
-        <span>{count}</span>
-        <button
-          aria-label="Decrement value"
-          onClick={() => dispatch(decrement())}
-        >
-          Decrement
-        </button>
+    <div className="grid grid-cols-[1fr_2fr] py-[12px] pr-[12px] min-h-full gap-[10px]  ">
+      <div className="flex flex-col gap-[10px] ">
+        <ContactListHeader/>
+        <ContactLists/>
       </div>
+      <Contacts/>
     </div>
   )
 }
