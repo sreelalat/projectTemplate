@@ -32,7 +32,7 @@ import {
         </p>
   
         {/* Pagination controls */}
-        <Pagination className=" max-w-[50%] mx-4">
+        <Pagination className=" max-w-[70%] mx-4 ">
           <PaginationContent>
             <PaginationPrevious
               className="text-black"
