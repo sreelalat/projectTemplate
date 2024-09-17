@@ -11,6 +11,7 @@ import {
 interface CustomPaginationProps {
   currentPage: number;
   totalItems: number; // Total number of items
+  itemsPerPage: number;
   onPageChange: (page: number) => void;
 }
 
@@ -18,8 +19,8 @@ const PaginationComponent: React.FC<CustomPaginationProps> = ({
   currentPage,
   totalItems,
   onPageChange,
+  itemsPerPage,
 }) => {
-  const itemsPerPage = 2;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   const startItem = (currentPage - 1) * itemsPerPage + 1;

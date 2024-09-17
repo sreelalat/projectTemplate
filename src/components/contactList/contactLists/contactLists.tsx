@@ -52,6 +52,7 @@ const ContactLists = () => {
         currentPage={currentPage}
         totalItems={contacts.length}  // Total number of items
         onPageChange={handlePageChange}
+        itemsPerPage={itemsPerPage}
       />
     </Card>
   );

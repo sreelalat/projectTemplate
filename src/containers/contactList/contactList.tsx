@@ -7,7 +7,7 @@ const ContactList = () => {
 
 
   return (
-    <div className="grid grid-cols-[1fr_2fr] py-[12px] pr-[12px] min-h-full gap-[10px]  ">
+    <div className="grid grid-cols-[1fr_1fr] lg:grid-cols-[1.45fr_2fr] py-[12px] pr-[12px] min-h-full gap-[10px]  ">
       <div className="flex flex-col gap-[10px] ">
         <ContactListHeader/>
         <ContactLists/>

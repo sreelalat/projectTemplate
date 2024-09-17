@@ -12,7 +12,7 @@ const SearchBar = () => {
 
   return (
     <div>
-    <div className="flex relative h-[44px] max-w-[300px]">
+    <div className="flex relative h-[44px]  max-w-[300px] lg:w-[300px]">
         <div className="absolute inset-y-0 start-0 flex items-center ps-3">
             <img src={searchIcon}/>
         </div>
