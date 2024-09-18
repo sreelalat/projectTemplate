@@ -1,4 +1,4 @@
-import ContactListHeader from "@/components/contactList/contacListHeader.tsx/contactListHeader"
+import ContactListHeader from "@/components/contactList/contacListHeader/contactListHeader"
 import ContactLists from "@/components/contactList/contactLists/contactLists"
 import Contacts from "@/components/contactList/contacts/contacts"
 
