@@ -5,7 +5,7 @@ import PaginationComponent from "@/components/atom/pageination/pageinationCompon
 
 const ContactLists = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const itemsPerPage = 2;
 
   const generateContacts = (count: number) => {
     const contacts = [];
@@ -39,8 +39,9 @@ const ContactLists = () => {
   );
 
   return (
-    <Card className="bg-white h-full p-[12px] gap-[24px]">
-      <div className="flex flex-col gap-[2px] h-[600px] overflow-auto">
+    <Card className="bg-white flex flex-col h-[707px] p-[12px] gap-[24px]">
+      {/* Contact list container with fixed height and scrollable content */}
+      <div className="flex flex-col gap-[2px]  flex-1 overflow-y-auto h-0">
         {paginatedContacts.map((contact) => (
           <ContactListTab key={contact.id} contact={contact} />
         ))}
@@ -51,8 +52,8 @@ const ContactLists = () => {
         currentPage={currentPage}
         totalItems={contacts.length}  // Total number of items
         onPageChange={handlePageChange}
+        itemsPerPage={itemsPerPage}
       />
-
     </Card>
   );
 };

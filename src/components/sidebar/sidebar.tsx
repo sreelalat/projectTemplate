@@ -1,10 +1,18 @@
-import Card from "../atom/card/card"
+interface SidebarProps {
+    
+    children: React.ReactNode;
+  }
 
-const Sidebar = () => {
+const Sidebar = ({ children }: SidebarProps) => {
   return (
-    <div className="w-[114px]  p-[12px] min-h-full">
-        <Card className="w-full h-full bg-white shadow-lg">hh</Card>
-      
+    <div>
+      <aside className={`h-full transition-all duration-300 `}>
+      <nav className="h-full flex flex-col   border-r shadow-sm">
+        
+        <ul className="flex-1  ">{children}</ul>
+       
+      </nav>
+    </aside>
     </div>
   )
 }
