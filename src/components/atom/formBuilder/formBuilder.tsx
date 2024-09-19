@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef, useCallback, forwardRef, useImperativeHandle } from 'react';
 import { ResultData, FormDataTypes, FormOptions, actionProps } from './formBuilder.types';
 import { CheckboxCmp } from '@/components/atom/checkbox/checkboxCmp';
 import { ButtonsProps, CheckboxProps, DropDownProps, TextAreaProps, TextboxProps } from './nodeCmp.types';
@@ -15,16 +15,13 @@ interface FormBuilderProps {
     handleFormResult: (result: ResultData) => void
 }
 
+export interface FormBuilderRef {
 
-const FormBuilder = ({
-    formData,
-    handleFormResult,
-    options = {
-        size: "medium", variant: "outlined", type: "default",
-        controlParentAndChild: false
-    },
-    ...props
-}: FormBuilderProps): JSX.Element => {
+    submitForm: () => void;
+
+}
+
+const FormBuilder = forwardRef<FormBuilderRef, FormBuilderProps>(({ formData, handleFormResult, options = { size: "medium", variant: "outlined", type: "default", controlParentAndChild: false }, ...props }, ref): JSX.Element => {
 
     const result = useRef<ResultData>({});
     const handleChange = (key: string, value: string | boolean): void => {
@@ -54,6 +51,10 @@ const FormBuilder = ({
         IntialFunctions();
     }, [IntialFunctions]);
 
+    // Use `useImperativeHandle` to expose internal methods like `FormSubmit`
+    useImperativeHandle(ref, () => ({
+        submitForm: FormSubmit,  // Expose the submit method
+    }));
     return (
         <>
             {options.type === 'modal' && <div className="fixed inset-0 bg-ba backdrop-blur-sm bg-opacity-40 transition-opacity"></div>}
@@ -95,6 +96,6 @@ const FormBuilder = ({
             </div>
         </>
     );
-};
+});
 
 export default FormBuilder;

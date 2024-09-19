@@ -3,7 +3,7 @@ const Logo = () => {
   return (
     <div className='flex gap-[6px] '>
         <img src={NCSlogo} className='size-6'/>
-      <span className="font-mono font-semibold text-lg text-orange-700">brodcast</span>
+      <span className="font-mono font-semibold text-lg text-orange-700">Brodcast</span>
     </div>
   )
 }

@@ -1909,6 +1909,11 @@ jwt-decode@^4.0.0:
   resolved "https://registry.yarnpkg.com/jwt-decode/-/jwt-decode-4.0.0.tgz#2270352425fd413785b2faf11f6e755c5151bd4b"
   integrity sha512-+KJGIyHgkGuIq3IEBNftfhW/LfWhXUIY6OmyVWjliu5KH1y0fw7VQ8YndE2O4qZdMSd9SqbnC8GOcZEy0Om7sA==
 
+keycode-js@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/keycode-js/-/keycode-js-3.1.0.tgz#9938d5488f9415ae243c4de6d6e827af293c7d75"
+  integrity sha512-aAa8PVW7kBDyG14ifGOseaVBjsT1LI953060yRSzzf3G0beKKEuwHVvFGcCI+AofY68NUkPxbLqrkfWPjXySCw==
+
 keyv@^4.5.4:
   version "4.5.4"
   resolved "https://registry.yarnpkg.com/keyv/-/keyv-4.5.4.tgz#a879a99e29452f942439f2a405e3af8b31d4de93"
