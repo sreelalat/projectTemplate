@@ -15,6 +15,7 @@ import { jwtDecode } from "jwt-decode";
 // import { setSimulation } from "../../toolkit/reducers/simulationSlice";
 // import { setLogoDetails } from "../../toolkit/reducers/logoSlice";
 import { getENVData } from "@/configs/enviornments";
+import Login from "../login/login";
 // import {AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse} from "axios";
 
 export interface tryLoginOptions {
@@ -39,8 +40,8 @@ interface AuthContextType {
 export const AuthContext = createContext<AuthContextType>(null!);
 
 export function AuthClient({ children }: { children: React.ReactNode }) {
-    const permissionStatus = useSelector((state: any) => state.Permissions.status);
-    const token = useSelector((state: any) => state.Permissions.token);
+    // const permissionStatus = useSelector((state: any) => state.Permissions.status);
+    const token = useSelector((state: any) => state.auth.token);
 
     const [isAuthenticated, setIsAuthenticated] = React.useState<string>(activityState.LOADING);
     const [accessToken, setAccessToken] = React.useState<string>('');
@@ -82,7 +83,7 @@ export function AuthClient({ children }: { children: React.ReactNode }) {
         });
     };
     const dispatch = useDispatch();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     // const handlePermission = async () => {
     //     setTimeout(async () => {
     //         let tenantData = sessionStorage.onSimulationTenant ? JSON.parse(sessionStorage.onSimulationTenant) : undefined
@@ -225,8 +226,11 @@ export function AuthClient({ children }: { children: React.ReactNode }) {
     }, [isAuthenticated])
 
     return <AuthContext.Provider value={value}>
-        {permissionStatus === 200 && (isAuthenticated === activityState.SUCCESS || isAuthenticated === activityState.SILENTCHECK) ? children
-            : isAuthenticated === activityState.LOADING || (permissionStatus === 0 && (isAuthenticated === activityState.SUCCESS || isAuthenticated === activityState.SILENTCHECK)) ?
+        {
+            // permissionStatus === 200 && 
+            // permissionStatus === 0 && 
+            (isAuthenticated === activityState.SUCCESS || isAuthenticated === activityState.SILENTCHECK) ? children
+                : isAuthenticated === activityState.LOADING || ((isAuthenticated === activityState.SUCCESS || isAuthenticated === activityState.SILENTCHECK)) ?
                 <div className="h-screen w-screen flex justify-center items-center">
                     {/* <Loader /> */}
                     <div>Loading.....</div>
@@ -235,9 +239,10 @@ export function AuthClient({ children }: { children: React.ReactNode }) {
                 // <PermissionChecker children={children} />
                 :
                 //  <Loginv2 />
-                <div>
-                    Login form
-                </div>
+                    // <div>
+                    //     Login form
+                    // </div>
+                    <Login />
         }
     </AuthContext.Provider>;
 }
