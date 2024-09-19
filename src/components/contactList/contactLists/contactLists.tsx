@@ -39,7 +39,7 @@ const ContactLists = () => {
   );
 
   return (
-    <Card className="bg-white flex flex-col h-[707px] p-[12px] gap-[24px]">
+    <Card className="bg-white flex flex-col h-[calc(100vh-182px)] p-[12px] gap-[24px]">
       {/* Contact list container with fixed height and scrollable content */}
       <div className="flex flex-col gap-[2px]  flex-1 overflow-y-auto h-0">
         {paginatedContacts.map((contact) => (

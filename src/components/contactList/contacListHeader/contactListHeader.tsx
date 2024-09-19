@@ -9,8 +9,8 @@ import Modal from '@/components/atom/modal/Modal';
 const ContactListHeader = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const openModal = () => setIsModalOpen(true);
-    const closeModal = () => setIsModalOpen(false);
+    const toggleModal = () => setIsModalOpen(!isModalOpen);
+    
 
     return (
         <>
@@ -20,14 +20,14 @@ const ContactListHeader = () => {
                 </div>
                 <div className="flex justify-end gap-[12px] self-stretch">
                     <SearchBar />
-                    <Button onClick={openModal} className="h-[44px] px-[16px] py-[12px] flex-shrink">
+                    <Button onClick={toggleModal} className="h-[44px] px-[16px] py-[12px] flex-shrink">
                         Add new Contact list
                     </Button>
                 </div>
             </Card>
 
             {/* Modal */}
-            <Modal isOpen={isModalOpen} onClose={closeModal} buttons={true} confirmValue='Confirm' cancelValue='Cancel' title='New Contact List'>
+            <Modal isOpen={isModalOpen} onClose={toggleModal} primarybutton={true} primaryValue='Confirm' secondarybutton={true} secondaryValue='Cancel'  secondaryAction={toggleModal} title='New Contact List' classname='h-[508px] w-[600px]' >
                 <ContactListModal/>
             </Modal>
         </>
