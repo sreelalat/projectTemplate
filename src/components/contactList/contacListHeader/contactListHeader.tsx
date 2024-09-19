@@ -2,9 +2,8 @@ import { useState } from 'react';
 import Card from "@/components/atom/card/card";
 import SearchBar from "@/components/atom/searchBar/searchBar";
 import { Button } from "@/components/ui/button";
-
-import ContactListModal from './contactListModal/contactListModal';
 import Modal from '@/components/atom/modal/Modal';
+import ContactListModal from '../contacListHeader.tsx/contactListModal/contactListModal';
 
 const ContactListHeader = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
