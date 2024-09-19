@@ -61,24 +61,24 @@ const PaginationComponent: React.FC<CustomPaginationProps> = ({
   const paginationLinks = getPaginationLinks();
 
   return (
-    <div className="flex flex-col items-center md:flex-row">
+    <div className="flex flex-col items-center md:flex-row w-full">
       {/* Display the pagination text */}
       <p className="mb-2 text-gray-600 flex-1">
         {startItem} to {endItem} of {totalItems}
       </p>
 
       {/* Pagination controls */}
-      <Pagination className="max-w-[70%] mx-4">
-        <PaginationContent>
+      <Pagination className="max-w-[70%] mx-4  justify-end">
+        <PaginationContent >
           <PaginationPrevious
-            className="text-black"
+            className="text-black cursor-pointer"
             onClick={() => onPageChange(Math.max(currentPage - 1, 1))}
           />
           {paginationLinks.map((link, idx) =>
             typeof link === "number" ? (
               <PaginationItem key={idx}>
                 <PaginationLink
-                  className="text-black"
+                  className="text-black cursor-pointer"
                   isActive={currentPage === link}
                   onClick={() => onPageChange(link)}
                 >
@@ -87,12 +87,12 @@ const PaginationComponent: React.FC<CustomPaginationProps> = ({
               </PaginationItem>
             ) : (
               <PaginationItem key={idx}>
-                <PaginationEllipsis />
+                <PaginationEllipsis  className="cursor-pointer"/>
               </PaginationItem>
             )
           )}
           <PaginationNext
-            className="text-black"
+            className="text-black cursor-pointer"
             onClick={() => onPageChange(Math.min(currentPage + 1, totalPages))}
           />
         </PaginationContent>

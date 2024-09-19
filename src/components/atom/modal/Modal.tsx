@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/button/button';
 import { ChevronLeftIcon } from 'lucide-react';
 import React, { useRef } from 'react';
 
