@@ -13,7 +13,7 @@ export const useLogout = () => {
     const handleLogout = () => {
         auth.signOut(() => {
             clearDB();
-            navigate(`/portal`, { replace: false });
+            navigate(`/`, { replace: false });
         });
     };
 

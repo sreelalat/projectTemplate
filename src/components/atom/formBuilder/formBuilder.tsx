@@ -30,6 +30,9 @@ const FormBuilder = forwardRef<FormBuilderRef, FormBuilderProps>(({ formData, ha
     };
 
     const FormSubmit = () => {
+
+        console.log("sdfsd");
+        
         handleFormResult(result.current);
     }
     const IntialFunctions = useCallback(() => {
@@ -45,11 +48,11 @@ const FormBuilder = forwardRef<FormBuilderRef, FormBuilderProps>(({ formData, ha
         });
         result.current = data;
         handleFormResult(data);
-    }, [formData, result, handleFormResult]);
+    }, [formData, result]);
 
     useEffect(() => {
         IntialFunctions();
-    }, [IntialFunctions]);
+    }, []);
 
     // Use `useImperativeHandle` to expose internal methods like `FormSubmit`
     useImperativeHandle(ref, () => ({

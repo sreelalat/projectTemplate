@@ -76,8 +76,15 @@ const Login = (props: any) => {
          
     }
     
+    const handleLogin = async(payload: { username: string, password: string }) => {
+        console.log("testpassword", payload)
+        auth.tryLogin(payload, (isAuthenticated: any) => {
+        })
+    }
 
     const triggerFormSubmit = () => {
+        console.log("sdfsd");
+        
         if (formBuilderRef.current) {
             formBuilderRef.current.submitForm();  // Call the exposed submit method
         }
@@ -121,11 +128,7 @@ const Login = (props: any) => {
             autoComplete: "off"
         }
     ]);
-    const handleLogin = async(payload: { username: string, password: string }) => {
-        console.log("testpassword", payload)
-        auth.tryLogin(payload, (isAuthenticated: any) => {
-        })
-    }
+
     // const handleResetPassword = (data: any) => {
     //     // console.log("resetpassword",data)
     //     setEmail(data.email)
