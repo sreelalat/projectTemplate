@@ -1,23 +1,18 @@
 import Card from "../atom/card/card";
 import Sidebar from "./sidebar";
 import SidebarItem from "./sidebarItem";
-import homeIcon from "../../assets/icons/sidebarIcons/home.svg";
-import smsIcon from "../../assets/icons/sidebarIcons/smsIcon.svg";
-import campaignIcon from "../../assets/icons/sidebarIcons/campaignIcon.svg";
-import contactsIcon from "../../assets/icons/sidebarIcons/contactsIcon.svg";
 
-import templatesIcon from "../../assets/icons/sidebarIcons/templatesIcon.svg";
-import reportsIcon from "../../assets/icons/sidebarIcons/reportsIcon.svg";
+import { HomeIcon, SmsIcon, CampaignIcon, ContactsIcon, ReportsIcon, TemplatesIcon } from "../../assets/icons/sidebarIcons/sidebarIcons";
 
 
 const SidebarComponent = () => {
   const menuItems = [
-    { name: "Home", iconSrc: homeIcon, link: "/home" },
-    { name: "SMS", iconSrc: smsIcon, link: "/sms" },
-    { name: "Campaign", iconSrc: campaignIcon, link: "/campaign" },
-    { name: "Contacts", iconSrc: contactsIcon, link: "/contactlist" },
-    { name: "Templates", iconSrc: templatesIcon, link: "/templates" },
-    { name: "Reports", iconSrc: reportsIcon, link: "/reports" },
+    { name: "Home", Icon: HomeIcon, link: "/home" },
+    { name: "SMS", Icon: SmsIcon, link: "/sms" },
+    { name: "Campaign", Icon: CampaignIcon, link: "/campaign" },
+    { name: "Contacts", Icon: ContactsIcon, link: "/contactlist" },
+    { name: "Templates", Icon: TemplatesIcon, link: "/templates" },
+    { name: "Reports", Icon: ReportsIcon, link: "/reports" },
   ];
   return (
     <div className="w-[114px] p-[12px] min-h-full">
@@ -27,7 +22,7 @@ const SidebarComponent = () => {
             <SidebarItem
               key={index}
               name={item.name}
-              iconSrc={item.iconSrc}
+              Icon={item.Icon}
               link={item.link}
             />
           ))}

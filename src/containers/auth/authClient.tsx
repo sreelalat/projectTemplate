@@ -49,6 +49,7 @@ export function AuthClient({ children }: { children: React.ReactNode }) {
     const [refreshToken, setRefreshToken] = React.useState<string>('');
     const [timeOut, setTimeOut] = React.useState<number>(300000);
     const [generatedTime, setGeneratedTime] = React.useState<Number>(10000);
+    
     let tryLogin = (options: tryLoginOptions, onSignInComplete: Function) => {
         setIsAuthenticated(activityState.WAIT);
         return Authv2.tryLogin(options, async (status: boolean, result: any) => {

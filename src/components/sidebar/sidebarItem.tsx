@@ -2,11 +2,11 @@ import { NavLink } from "react-router-dom";
 
 interface SidebarItemProps {
   name: string;
-  iconSrc: string;
+  Icon: React.FC<{ fill: string }>; 
   link: string;
 }
 
-const SidebarItem = ({ name, iconSrc, link }: SidebarItemProps) => {
+const SidebarItem = ({ name, Icon, link }: SidebarItemProps) => {
   return (
     <li className="relative">
       <NavLink to={link}>
@@ -17,7 +17,7 @@ const SidebarItem = ({ name, iconSrc, link }: SidebarItemProps) => {
                 isActive ? "text-[#AB5D0A] bg-orange-100" : "text-gray-600 hover:text-[#AB5D0A]"
               }`}
             >
-              <img src={iconSrc} alt={name} className="w-[28px] h-[28px] flex-shrink-0" />
+              <Icon fill={isActive? '#AB5D0A' : '#595959' }/>
               <span className=" font-sans text-center text-sm">{name}</span>
             </div>
             {isActive && (

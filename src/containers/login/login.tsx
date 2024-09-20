@@ -11,12 +11,90 @@ import { formValidation } from "../../utils/utilities";
 // import LockResetIcon from '@mui/icons-material/LockReset';
 // import { resetPassword } from '../../services/api'
 import { useSelector } from "react-redux";
+import FormBuilder, { FormBuilderRef } from "@/components/atom/formBuilder/formBuilder";
+import { actionProps, FormDataTypes } from "@/components/atom/formBuilder/formBuilder.types";
+import { Button } from "@/components/ui/button/button";
+import { LockKeyholeOpen } from "lucide-react";
+import Logo from "@/components/navbar/logo";
 
 
 const Login = (props: any) => {
     const auth = useAuth();
     // const logoDetails = useSelector((state: any) => state.logoDetails.details);
     const [loginPageStatus, setLoginPageStatus] = useState<string>('login');
+    //--------------------------------------------------------------------------------------------
+
+    const [credentials,setCredentials] = useState({})
+    const loginFormData: FormDataTypes[] = [
+        {
+            id: '1',
+            formControl: "textbox",
+            typeInput: 'text',
+            fieldName: "username",
+            label: "Username",
+            value: "",
+            placeholder: "Username",
+            required: true,
+            disabled: false,
+            layout: {
+                lg: "lg:w-full",
+                md: "md:w-full",
+                sm: "sm:w-full"
+            },
+            
+            childClass: "" // @dev classes for styling the input field wrapper
+        },
+        {
+            id: '2',
+            formControl: "textbox",
+            typeInput: 'password',
+            fieldName: "password",
+            label: "Password",
+            value: "",
+            placeholder: "Password",
+            required: true,
+            disabled: false,
+            layout: {
+                lg: "lg:w-full",
+                md: "md:w-full",
+                sm: "sm:w-full"
+            },
+            childClass: "" // @dev classes for styling the input field wrapper
+        },
+
+    ];
+    const formBuilderRef = useRef<{ submitForm: () => void }>(null);
+
+    const formActions: actionProps = (action: string, data: unknown): void => {
+        console.log("formActions", action, data);
+    };
+
+    const handleFormResult = (result: any) => {
+        console.log("Form Result:" , result);
+        
+        handleLogin(result)
+         
+    }
+    
+    const handleLogin = async(payload: { username: string, password: string }) => {
+        console.log("testpassword", payload)
+        auth.tryLogin(payload, (isAuthenticated: any) => {
+        })
+    }
+
+    const triggerFormSubmit = () => {
+        console.log("sdfsd");
+        
+        if (formBuilderRef.current) {
+            formBuilderRef.current.submitForm();  // Call the exposed submit method
+        }
+        
+    };
+
+    
+
+
+    //-----------------------------------------------------------------------------------------
     const [email, setEmail] = useState<string>('');
     const resertPasswordField = [
         {
@@ -50,11 +128,7 @@ const Login = (props: any) => {
             autoComplete: "off"
         }
     ]);
-    const handleLogin = (payload: { username: string, password: string }) => {
-        console.log("testpassword", payload)
-        auth.tryLogin(payload, (isAuthenticated: any) => {
-        })
-    }
+
     // const handleResetPassword = (data: any) => {
     //     // console.log("resetpassword",data)
     //     setEmail(data.email)
@@ -134,9 +208,12 @@ const Login = (props: any) => {
                     </div>
                 </div>
             </div>
-            <div className="flex justify-center items-center w-[350px] p-[20px]">
-                <div>
+            <div className="flex justify-center  items-center w-[350px] p-[20px] ">
+                <div className =" w-full h-full flex justify-center  items-center flex-col gap-[32px]">
                     {/* <img className="h-8 mx-1 mb-8" src={logoDetails.logoWhite.length > 50 ? logoDetails.logoWhite : (sessionStorage.subdomainLogo ?? Logo)} alt="login" /> */}
+                    <div className="w-full  flex items-center justify-center">
+                    <Logo/>
+                    </div>
                     {
                         loginPageStatus === 'reset' ?
                             <>
@@ -147,20 +224,35 @@ const Login = (props: any) => {
                                 </div> */}
                             </>
                             : loginPageStatus === 'login' ?
-                                <>
-                                    {/* <ComponentMap data={data} setData={setData} /> */}
-                                    <input type="text" className="bg-[#ffffff]" placeholder="username" onChange={(e) => setUserName(e.target.value)} />
-                                    <input type="password" className="bg-[#ffffff]" placeholder="password" onChange={(e) => setPassword(e.target.value)} />
-                                    <div className="flex justify-between p-2 mt-2 ">
-                                        <div className="pt-3">
-                                            <span className="cursor-pointer" onClick={() => setLoginPageStatus('reset')}>Forgot Password?</span>
-                                        </div>
-                                        <div>
-                                            <button onClick={() => handleLogin({ username: username, password: password })}>Login</button>
-                                            {/* <ThemedButton icon="custom" iconComponent={<LockOpenIcon />} loading={auth.isAuthenticated === activityState.WAIT} click={handleLogin} valiData={data} change={setData} children={'Login'} theme={"secondary"} /> */}
-                                        </div>
+                                // <>
+                                //     {/* <ComponentMap data={data} setData={setData} /> */}
+                                //     <input type="text" className="bg-[#ffffff]" placeholder="username" onChange={(e) => setUserName(e.target.value)} />
+                                //     <input type="password" className="bg-[#ffffff]" placeholder="password" onChange={(e) => setPassword(e.target.value)} />
+                                //     <div className="flex justify-between p-2 mt-2 ">
+                                //         <div className="pt-3">
+                                //             <span className="cursor-pointer" onClick={() => setLoginPageStatus('reset')}>Forgot Password?</span>
+                                //         </div>
+                                //         <div>
+                                //             <button onClick={() => handleLogin({ username: username, password: password })}>Login</button>
+                                //             {/* <ThemedButton icon="custom" iconComponent={<LockOpenIcon />} loading={auth.isAuthenticated === activityState.WAIT} click={handleLogin} valiData={data} change={setData} children={'Login'} theme={"secondary"} /> */}
+                                //         </div>
+                                //     </div>
+                                // </>
+                                <div className="  flex flex-col gap-[32px]">
+                                    <FormBuilder
+                                        ref={formBuilderRef}
+                                        formActions={formActions}
+                                        options={{ type: 'default', size: "medium", controlParentAndChild: false }}
+                                        handleFormResult={handleFormResult}
+                                        formData={loginFormData}
+                                        parentClass='w-full h-full flex flex-wrap'
+                                    />
+                                    <div className="w-full flex">
+                                        <Button className="bg-transparent border-0 shadow-none flex justify-start flex-1">Forgot password?</Button>
+                                    <Button onClick={triggerFormSubmit} variant="outline" className=" flex gap-2 "><LockKeyholeOpen/> Login</Button>
                                     </div>
-                                </>
+
+                                </div>
                                 : loginPageStatus === 'reset_success' &&
 
                                 <div>

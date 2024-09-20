@@ -1,16 +1,22 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Card from "@/components/atom/card/card";
 import SearchBar from "@/components/atom/searchBar/searchBar";
-import { Button } from "@/components/ui/button";
-
+import { Button } from "@/components/ui/button/button";
 import ContactListModal from '../contactListModal/contactListModal';
 import Modal from '@/components/atom/modal/Modal';
 
 const ContactListHeader = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const formBuilderRef = useRef<{ submitForm: () => void }>(null);
 
     const toggleModal = () => setIsModalOpen(!isModalOpen);
-    
+
+    const triggerFormSubmit = () => {
+        if (formBuilderRef.current) {
+            formBuilderRef.current.submitForm(); // Trigger form submit
+        }
+        toggleModal()
+    };
 
     return (
         <>
@@ -27,11 +33,22 @@ const ContactListHeader = () => {
             </Card>
 
             {/* Modal */}
-            <Modal isOpen={isModalOpen} onClose={toggleModal} primarybutton={true} primaryValue='Confirm' secondarybutton={true} secondaryValue='Cancel'  secondaryAction={toggleModal} title='New Contact List' classname='h-[508px] w-[600px]' >
-                <ContactListModal/>
+            <Modal
+                isOpen={isModalOpen}
+                onClose={toggleModal}
+                primarybutton={true}
+                primaryValue="Confirm"
+                primaryAction={triggerFormSubmit} // Pass triggerFormSubmit here
+                secondarybutton={true}
+                secondaryValue="Cancel"
+                secondaryAction={toggleModal}
+                title="New Contact List"
+                classname="h-[508px] w-[600px]"
+            >
+                <ContactListModal formBuilderRef={formBuilderRef} />
             </Modal>
         </>
     );
-}
+};
 
 export default ContactListHeader;
