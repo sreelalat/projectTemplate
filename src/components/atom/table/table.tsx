@@ -1,4 +1,5 @@
 import emptyfile from "../../../../../../constants/images/emptyFile.jpg"
+import PaginationComponent from "../pageination/pageinationComponent"
 import Sort from "./sort"
 // import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
 // import "react-loading-skeleton/dist/skeleton.css"
@@ -26,12 +27,18 @@ function Table(props: {
     } = props
     console.log("tableData", tableData)
 
+    const handlePageChange = () =>{
+
+    }
+
     return (
+        <div className="h-full flex  flex-col">
+            
         <div
             data-testid="table"
-            className={` table-fix-head block mx-auto w-full overflow-auto ${mainClass}`}
+            className={` table-fix-head block mx-auto w-full overflow-auto ${mainClass}   flex-1 `}
         >
-            <table className={`${tableClass} table-fixed w-full`}>
+            <table className={`${tableClass} table-fixed w-full `}>
                 <thead className="text-xs sticky top-0 z-10">
                     <tr className="">
                         {tableTitles?.map((node: any, index: number) => {
@@ -45,14 +52,14 @@ function Table(props: {
                                         // <Checkbox className="" checked={node?.selectAll} onChange={() => null} />
                                         <div
                                             className={`flex 
-                   items-center font-semibold text-[#543D37] text-sm`}
+                   items-center  font-semibold text-[#543D37] text-sm`}
                                         >
-                                            {node?.title}
-                                            {/* {node?.sort && (<>
+                                            <div className="flex-1">{node?.title}</div>
+                                            {node?.sort && (<>
                                                 <a href="#">{node?.icon} </a>
                                                 <Sort node={node} tableTitles={tableTitles} handleTableAction={handleTableAction} />
                                             </>)
-                                            } */}
+                                            }
                                         </div>
                                     )}
                                 </th>
@@ -66,12 +73,12 @@ function Table(props: {
                         true ? (
                             tableData?.length ? (
                                 tableData?.map((node: any, index: number) => {
-                                    const rowColorClass = index % 2 === 0 ? "" : "bg-[#EBEDEF]"
+                                    const rowColorClass = index % 2 === 0 ? "bg-[#FBFBFF]" : "bg-[#F2F4FB]"
                                     console.log("node", node)
                                     return (
                                         <tr
                                             key={index}
-                                            className={`${rowColorClass} first-letter:cursor-pointer cursor-default hover:bg-[#FEF4E9] group
+                                            className={`${rowColorClass} first-letter:cursor-pointer cursor-default hover:bg-[#FEF4E9] hover:shadow-lg  group hover:-translate-y-[0.001px] duration-100
                                             }`}
                                         >
                                             {tableTitles?.map((column: any, colIndex: number) => {
@@ -173,6 +180,8 @@ function Table(props: {
                         )}
                 </tbody>
             </table>
+        </div>
+        <PaginationComponent currentPage={1} itemsPerPage={5} totalItems={25} onPageChange={handlePageChange}/>
         </div>
     )
 }

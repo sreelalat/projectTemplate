@@ -77,21 +77,35 @@ const tenantsTableTitles = [
 
 const tableData = [
   {
-    name: "Netstratum Technologies",
+    name: "Netstratum",
     number: "100",
     wireless: 'yes',
     addedDate: '10/10/2021',
     status: 'Subscribed',
   },
   {
-    name: "Netstratum Technologies",
+    name: "Netstratum",
     number: "100",
     wireless: 'yes',
     addedDate: '10/10/2021',
     status: 'Subscribed',
   },
   {
-    name: "Netstratum Technologies",
+    name: "Netstratum ",
+    number: "100",
+    wireless: 'yes',
+    addedDate: '10/10/2021',
+    status: 'Subscribed',
+  },
+  {
+    name: "Netstratum ",
+    number: "100",
+    wireless: 'yes',
+    addedDate: '10/10/2021',
+    status: 'Subscribed',
+  },
+  {
+    name: "Netstratum ",
     number: "100",
     wireless: 'yes',
     addedDate: '10/10/2021',
@@ -168,7 +182,7 @@ const ContactsTable = () => {
     }
   };
   return (
-    <div>
+    <div className=" h-full">
       <Table
         tableTitles={tenantsTableTitles}
         tableData={tableData}
