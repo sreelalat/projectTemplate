@@ -7,7 +7,7 @@ const tenantsTableTitles = [
     key: "name",
     title: "Name",
     sort: {
-      direction: "asc",
+      direction: "desc",
       active: true,
       action: {
         command: "sort",

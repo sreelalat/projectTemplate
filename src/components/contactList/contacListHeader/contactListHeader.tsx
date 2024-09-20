@@ -24,7 +24,7 @@ const ContactListHeader = () => {
                 <div className="w-1/3">
                     <p className="font-bold min-w-[100px]">Contact List</p>
                 </div>
-                <div className="flex justify-end gap-[12px] self-stretch">
+                <div className="flex w-full justify-end gap-[12px] self-stretch ">
                     <SearchBar />
                     <Button onClick={toggleModal} className="h-[44px] px-[16px] py-[12px] flex-shrink">
                         Add new Contact list

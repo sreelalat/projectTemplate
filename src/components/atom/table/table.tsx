@@ -80,7 +80,7 @@ function Table(props: {
                                     return (
                                         <tr
                                             key={index}
-                                            className={`${rowColorClass} first-letter:cursor-pointer cursor-default hover:bg-[#FEF4E9] hover:shadow-lg  group hover:-translate-y-[0.001px] duration-100
+                                            className={`${rowColorClass} first-letter:cursor-pointer cursor-default hover:bg-[#FEF4E9] hover:shadow-lg  group hover:-translate-y-[0.001px] 
                                             }`}
                                         >
                                             {tableTitles?.map((column: any, colIndex: number) => {

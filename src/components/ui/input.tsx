@@ -56,15 +56,15 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(({ node, handleChan
             {isPasswordVisible ? <EyeOff className="w-5 h-5 text-gray-600" /> : <Eye className="w-5 h-5 text-gray-600" />}
           </div>
         )}
-      </div>
-      <label
+        <label
         htmlFor={node?.id + 500}
-        className="absolute max-w-fit overflow-hidden rounded-full text-sm text-gray-500 duration-300 transform -translate-y-[22px] scale-75 top-3 z-10 origin-[0] bg-white px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-5 left-2.5
-        whitespace-nowrap text-ellipsis"
+        className="absolute max-w-fit overflow-hidden text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 z-10 origin-[0] bg-white rounded-full px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 left-2.5 whitespace-nowrap text-ellipsis"
         style={{ width: 'calc(100% - 1rem)' }}
       >
         {node?.placeholder ?? ""}
       </label>
+      </div>
+      
     </div>
   );
 });

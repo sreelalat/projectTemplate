@@ -5,7 +5,7 @@ import PaginationComponent from "@/components/atom/pageination/pageinationCompon
 
 const ContactLists = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 2;
+  const itemsPerPage = 10;
 
   const generateContacts = (count: number) => {
     const contacts = [];
