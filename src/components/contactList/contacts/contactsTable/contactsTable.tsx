@@ -75,43 +75,44 @@ const tenantsTableTitles = [
 
 ];
 
-const tableData = [
-  {
-    name: "Netstratum",
-    number: "100",
-    wireless: 'yes',
-    addedDate: '10/10/2021',
-    status: 'Subscribed',
-  },
-  {
-    name: "Netstratum",
-    number: "100",
-    wireless: 'yes',
-    addedDate: '10/10/2021',
-    status: 'Subscribed',
-  },
-  {
-    name: "Netstratum ",
-    number: "100",
-    wireless: 'yes',
-    addedDate: '10/10/2021',
-    status: 'Subscribed',
-  },
-  {
-    name: "Netstratum ",
-    number: "100",
-    wireless: 'yes',
-    addedDate: '10/10/2021',
-    status: 'Subscribed',
-  },
-  {
-    name: "Netstratum ",
-    number: "100",
-    wireless: 'yes',
-    addedDate: '10/10/2021',
-    status: 'Subscribed',
-  },
-];
+//-----------------------------------------------------------
+function getRandomInt(min: number, max: number): number {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function getRandomDate(start: Date, end: Date): string {
+  const date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+  return date.toLocaleDateString("en-US");
+}
+
+function generateTableData(count: number) {
+  const names = ["Netstratum", "Abc", "Xyz", "Pqr", "Def", "Ghi", "Jkl", "Mno"];
+  const statuses = ["Subscribed", "Unsubscribed"];
+  
+  const tableData = [];
+
+  for (let i = 0; i < count; i++) {
+    const randomName = names[getRandomInt(0, names.length - 1)];
+    const randomNumber = getRandomInt(1000, 2000).toString();
+    const randomWireless = getRandomInt(0, 1) === 0 ? "yes" : "no";
+    const randomDate = getRandomDate(new Date(2020, 0, 1), new Date());
+    const randomStatus = statuses[getRandomInt(0, statuses.length - 1)];
+
+    tableData.push({
+      name: randomName,
+      number: randomNumber,
+      wireless: randomWireless,
+      addedDate: randomDate,
+      status: randomStatus,
+    });
+  }
+
+  return tableData;
+}
+
+const tableData = generateTableData(20)
+//--------------------------------------------------------------
+
 
 const customOptions = {
   searchBar: {
@@ -182,7 +183,7 @@ const ContactsTable = () => {
     }
   };
   return (
-    <div className=" h-full">
+    <div className=" h-[calc(100vh-232px)]">
       <Table
         tableTitles={tenantsTableTitles}
         tableData={tableData}

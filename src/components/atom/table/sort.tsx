@@ -4,10 +4,11 @@
 // import { TableTitles } from '../services/interfaces';
 // TableTitles[]
 
-import { ArrowUpIcon, ChevronDown } from "lucide-react";
+import {  ChevronDown, ChevronUp } from "lucide-react";
 
 const Sort = ({ node, tableTitles, handleTableAction }: { node: any, tableTitles: any, handleTableAction: any }) => {
 
+    console.log("node")
     const onManageSort = (node: any) => {
         var data = [...tableTitles];
         var sortOrder = "desc";
@@ -41,7 +42,7 @@ const Sort = ({ node, tableTitles, handleTableAction }: { node: any, tableTitles
                     onClick={() => onManageSort(node)}
                 >
                     <div
-                        className={`absolute  left-[-10px] -top-[10px] `}
+                        className={`absolute  left-[-10px] -top-[8px] `}
                     >
                         {node?.sort.direction === "asc" ? (
                             // <KeyboardArrowDownIcon
@@ -50,7 +51,7 @@ const Sort = ({ node, tableTitles, handleTableAction }: { node: any, tableTitles
                             //         : "!text-[#222]"
                             //         }`}
                             // />
-                            <ChevronDown/>
+                            <ChevronDown className="size-4"/>
                         ) : (
                             // <KeyboardArrowUpIcon
                             //     className={`${node?.sort.active
@@ -58,7 +59,7 @@ const Sort = ({ node, tableTitles, handleTableAction }: { node: any, tableTitles
                             //         : "!text-[#222]"
                             //         }`}
                             // />
-                            <ChevronDown/>
+                            <ChevronUp className="size-4"/>
                         )}
                     </div>
                 </div>

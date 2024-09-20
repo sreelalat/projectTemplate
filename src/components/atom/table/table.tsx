@@ -27,12 +27,14 @@ function Table(props: {
     } = props
     console.log("tableData", tableData)
 
+    
+
     const handlePageChange = () =>{
 
     }
 
     return (
-        <div className="h-full flex  flex-col">
+        <div className="h-full flex  flex-col gap-[12px]">
             
         <div
             data-testid="table"
@@ -52,9 +54,9 @@ function Table(props: {
                                         // <Checkbox className="" checked={node?.selectAll} onChange={() => null} />
                                         <div
                                             className={`flex 
-                   items-center  font-semibold text-[#543D37] text-sm`}
+                   items-center  font-semibold text-[#543D37] text-sm gap-[10px]`}
                                         >
-                                            <div className="flex-1">{node?.title}</div>
+                                            <div className="">{node?.title}</div>
                                             {node?.sort && (<>
                                                 <a href="#">{node?.icon} </a>
                                                 <Sort node={node} tableTitles={tableTitles} handleTableAction={handleTableAction} />
