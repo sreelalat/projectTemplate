@@ -81,14 +81,14 @@ const InputTags = React.forwardRef<HTMLInputElement, InputTagsProps>(
             <Badge key={item} variant="secondary">
               {item}
               <Button
-                variant="ghost"
+                variant="outline"
                 size="icon"
                 className="ml-2 h-3 w-3"
                 onClick={() => {
                   setValues(values.filter((i) => i !== item));
                 }}
               >
-                <XIcon className="w-3" />
+                <XIcon className="w-3 h-3 text-black" />
               </Button>
             </Badge>
           ))}
