@@ -1627,6 +1627,11 @@ file-entry-cache@^8.0.0:
   dependencies:
     flat-cache "^4.0.0"
 
+file-saver@^2.0.2:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/file-saver/-/file-saver-2.0.5.tgz#d61cfe2ce059f414d899e9dd6d4107ee25670c38"
+  integrity sha512-P9bmyZ3h/PRG+Nzga+rbdI4OEpNDzAVyy74uVO9ATgzLK6VtAsYybF/+TOCvrc0MO793d6+42lLyZTw7/ArVzA==
+
 fill-range@^7.1.1:
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/fill-range/-/fill-range-7.1.1.tgz#44265d3cac07e3ea7dc247516380643754a05292"
@@ -2240,6 +2245,13 @@ react-cookie@^7.2.0:
     "@types/hoist-non-react-statics" "^3.3.5"
     hoist-non-react-statics "^3.3.2"
     universal-cookie "^7.0.0"
+
+react-csv-downloader@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/react-csv-downloader/-/react-csv-downloader-3.1.1.tgz#4b45427cc1c4868138882b209c37ce589066a36c"
+  integrity sha512-bQiTP8Ef3bVlFlbSVNbhtHfiSS1EmUlovU4uqvGqMaEgZ69ycZIL3nRzIcHjosUhFHcq0cTp1EH5FQrdK6UR8Q==
+  dependencies:
+    file-saver "^2.0.2"
 
 react-dom@^18.3.1:
   version "18.3.1"

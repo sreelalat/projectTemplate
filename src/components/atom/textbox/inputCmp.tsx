@@ -1,4 +1,4 @@
-import { Input } from "@/components/ui/input"
+import { Input } from "@/components/ui/input/input"
 import { TextboxProps } from "../formBuilder/nodeCmp.types"
 
 interface InputCmpProps {

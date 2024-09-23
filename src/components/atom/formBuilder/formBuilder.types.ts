@@ -30,4 +30,4 @@ export interface FormOptions {
     size?: "small" | "medium";
     variant?: "filled" | "outlined";
 }
-export type FormDataTypes = CheckboxProps | DropDownProps | TextboxProps | TextAreaProps | ButtonsProps
+export type FormDataTypes = CheckboxProps | DropDownProps | TextboxProps | TextAreaProps | ButtonsProps 

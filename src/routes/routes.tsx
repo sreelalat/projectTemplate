@@ -1,3 +1,4 @@
+import Components from "@/containers/components/components";
 import ContactList from "@/containers/contactList/contactList";
 import ErrorPage from "@/containers/errorPage/errorPage";
 import Layout from "@/containers/layout/layout";
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path:"/components",
+    element:<Components/>
+  }
 ]);
 
 

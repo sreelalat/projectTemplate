@@ -15,13 +15,13 @@ const ProfileButton = () => {
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
-                    <DropdownMenuItem>
+                    <DropdownMenuItem className="cursor-pointer">
                         <User className="mr-2 h-4 w-4" />
                         <span>Profile</span>
                     </DropdownMenuItem>
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={handleLogOut}>
+                <DropdownMenuItem onClick={handleLogOut} className="cursor-pointer">
                     <LogOut className="mr-2 h-4 w-4" />
                     <span>Log out</span>
                 </DropdownMenuItem>
