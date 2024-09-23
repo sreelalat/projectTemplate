@@ -2,12 +2,26 @@ import Card from "@/components/atom/card/card"
 import SearchBar from "@/components/atom/searchBar/searchBar"
 import { Button } from "@/components/ui/button/button"
 import GroupIcon from '../../../../assets/icons/groupIcon.svg'
-import ButtonIcon from '../../../../assets/icons/buttonIcon.svg'
+import Modal from "@/components/atom/modal/Modal"
+import ContactsModal from "../contactsTable/contactsModal"
+import { useState } from "react"
+import MoreOptions from "./moreOptions"
 
 
 const ContactsHeader = () => {
     const name= "Contact List 1"
     const contacts = 1200
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const toggleModal = () => setIsModalOpen(!isModalOpen);
+    const handleEdit = () =>{
+
+    }
+    const handleDelete = () =>{
+
+    }
+
   return (
     <Card className="bg-white h-[68px] p-[12px] flex items-center ">
             <div className=' flex-1 gap-2 '>
@@ -21,11 +35,25 @@ const ContactsHeader = () => {
             </div>            
             <div className="flex justify-end gap-[12px] self-stretch items-center">
                 <SearchBar/>
-                <Button className="h-[44px] px-[16px] py-[12px] flex-shrink">Add new Contact</Button>
-                <div className="flex justify-center items-center w-[32px] h-[32px] rounded-sm  border-[0.5px]">
-                <img src={ButtonIcon}/>
-                </div>
+                <Button className="h-[44px] px-[16px] py-[12px] flex-shrink" onClick={toggleModal}>
+                    Add new Contact
+                    </Button>
+                <MoreOptions/>
             </div>
+            <Modal
+                isOpen={isModalOpen}
+                onClose={toggleModal}
+                primarybutton={true}
+                primaryValue="Edit"
+                primaryAction={handleEdit}
+                secondarybutton={true}
+                secondaryValue="Delete"
+                secondaryAction={handleDelete}
+                title="Contact Details"
+                classname="h-[508px] w-[600px]"
+            >
+                <ContactsModal />
+            </Modal>
 
                 
 
