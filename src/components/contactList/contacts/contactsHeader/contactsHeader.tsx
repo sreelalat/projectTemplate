@@ -40,8 +40,7 @@ const ContactsHeader = () => {
                     </Button>
                 <MoreOptions/>
             </div>
-            <Modal
-                isOpen={isModalOpen}
+            {false && <Modal
                 onClose={toggleModal}
                 primarybutton={true}
                 primaryValue="Edit"
@@ -53,7 +52,7 @@ const ContactsHeader = () => {
                 classname="h-[508px] w-[600px]"
             >
                 <ContactsModal />
-            </Modal>
+            </Modal>}
 
                 
 

@@ -1,22 +1,33 @@
-import { useState, useRef } from 'react';
+import {  useRef } from 'react';
 import Card from "@/components/atom/card/card";
 import SearchBar from "@/components/atom/searchBar/searchBar";
 import { Button } from "@/components/ui/button/button";
 import ContactListModal from '../contactListModal/contactListModal';
 import Modal from '@/components/atom/modal/Modal';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const ContactListHeader = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const params = useParams()
+    const navigate = useNavigate()
     const formBuilderRef = useRef<{ submitForm: () => void }>(null);
 
-    const toggleModal = () => setIsModalOpen(!isModalOpen);
+    const handleAddNewList = () =>{
+        navigate("/contactlist/newcontactlist")
+    }
+
+    const handleCloseModal = () =>{
+        navigate(-1)
+    }
 
     const triggerFormSubmit = () => {
         if (formBuilderRef.current) {
             formBuilderRef.current.submitForm(); // Trigger form submit
         }
-        toggleModal()
+        handleCloseModal()
+        
     };
+    const modalIsOpen = params.contactlistId === "new" ? true:false;
+    console.log("modalisopen",modalIsOpen)
 
     return (
         <>
@@ -26,27 +37,28 @@ const ContactListHeader = () => {
                 </div>
                 <div className="flex w-full justify-end gap-[12px] self-stretch ">
                     <SearchBar />
-                    <Button onClick={toggleModal} className="h-[44px] px-[16px] py-[12px] flex-shrink">
+                    <Button onClick={handleAddNewList} className="h-[44px] px-[16px] py-[12px] flex-shrink">
                         Add new Contact list
                     </Button>
                 </div>
             </Card>
 
             {/* Modal */}
+            {params.contactlistId === "newcontactlist" && 
             <Modal
-                isOpen={isModalOpen}
-                onClose={toggleModal}
+                
+                onClose={handleCloseModal}
                 primarybutton={true}
                 primaryValue="Confirm"
                 primaryAction={triggerFormSubmit} // Pass triggerFormSubmit here
                 secondarybutton={true}
                 secondaryValue="Cancel"
-                secondaryAction={toggleModal}
+                secondaryAction={handleCloseModal}
                 title="New Contact List"
                 classname="h-[508px] w-[600px]"
             >
                 <ContactListModal formBuilderRef={formBuilderRef} />
-            </Modal>
+            </Modal>}
         </>
     );
 };

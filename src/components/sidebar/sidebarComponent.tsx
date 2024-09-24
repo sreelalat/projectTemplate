@@ -2,13 +2,12 @@ import Card from "../atom/card/card";
 import Sidebar from "./sidebar";
 import SidebarItem from "./sidebarItem";
 
-import { HomeIcon, SmsIcon, CampaignIcon, ContactsIcon, ReportsIcon, TemplatesIcon } from "../../assets/icons/sidebarIcons/sidebarIcons";
-
+import { HomeIcon, ChannelIcon, CampaignIcon, ContactsIcon, ReportsIcon, TemplatesIcon } from "../../assets/icons/sidebarIcons/sidebarIcons";
 
 const SidebarComponent = () => {
   const menuItems = [
     { name: "Home", Icon: HomeIcon, link: "/home" },
-    { name: "SMS", Icon: SmsIcon, link: "/sms" },
+    { name: "Channels", Icon: ChannelIcon, link: "/channels" },
     { name: "Campaign", Icon: CampaignIcon, link: "/campaign" },
     { name: "Contacts", Icon: ContactsIcon, link: "/contactlist" },
     { name: "Templates", Icon: TemplatesIcon, link: "/templates" },

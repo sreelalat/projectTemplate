@@ -2,6 +2,7 @@ import { useState } from "react";
 import Card from "@/components/atom/card/card";
 import ContactListTab from "./contactListTab/contactListTab";
 import PaginationComponent from "@/components/atom/pageination/pageinationComponent";
+import EmptyList from "@/components/atom/emptyList/emptyList";
 
 const ContactLists = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -27,7 +28,7 @@ const ContactLists = () => {
     return contacts;
   };
 
-  const contacts = generateContacts(28);
+  const contacts = generateContacts(95);
 
   const handlePageChange = (newPage: number) => {
     setCurrentPage(newPage);
@@ -37,6 +38,11 @@ const ContactLists = () => {
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
+  if(contacts.length <=0 ){
+    return(
+      <EmptyList message="No Contact List added"/>
+    )
+  }
 
   return (
     <Card className="bg-white flex flex-col h-[calc(100vh-182px)] p-[12px] gap-[24px]">

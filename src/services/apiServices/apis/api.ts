@@ -64,3 +64,30 @@ export async function tryKeyCloakRefresh(options: any) {
   });
   return post(url, payload, { source: "keyCloak", skipTelco: true }, headers);
 }
+
+export async function fetchContactLists(options: any) {
+  const url = `realms/${options.realm}/protocol/openid-connect/token`;
+  const headers = {
+    "Content-Type": "application/x-www-form-urlencoded",
+  };
+  const payload = new URLSearchParams({
+    refresh_token: options.refresh_token,
+    grant_type: options.grant_type,
+    client_id: options.sname,
+  });
+  return post(url, payload, { source: "default", skipTelco: true }, headers);
+}
+
+export async function fetchContacts(options: any) {
+  const url = `realms/${options.realm}/protocol/openid-connect/token`;
+  const headers = {
+    "Content-Type": "application/x-www-form-urlencoded",
+  };
+  const payload = new URLSearchParams({
+    refresh_token: options.refresh_token,
+    grant_type: options.grant_type,
+    client_id: options.sname,
+  });
+  return post(url, payload, { source: "keyCloak", skipTelco: true }, headers);
+}
+

@@ -3,8 +3,9 @@ import settingsIcon from '../../assets/icons/settingsIcon.svg'
 import notficationIcon from '../../assets/icons/notificationIcon.svg'
 import Logo from './logo'
 import ProfileButton from './profileButton'
+import React from 'react'
 
-const Navbar = () => {
+const Navbar = React.memo(() => {
   return (
     <div className="  px-[24px] py-[12px] h-[80px] bg-white flex">
       <div className="w-[50%] h-full flex  items-center  ">
@@ -18,6 +19,6 @@ const Navbar = () => {
       </div>
     </div>
   )
-}
+})
 
 export default Navbar

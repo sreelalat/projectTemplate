@@ -3,7 +3,6 @@ import { ChevronLeftIcon } from 'lucide-react';
 import React, { useRef } from 'react';
 
 interface ModalProps {
-    isOpen: boolean;
     onClose: () => void;
     children: React.ReactNode;
     title?:string;
@@ -16,7 +15,7 @@ interface ModalProps {
     secondaryAction?: () => void;
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children,title, classname,primarybutton,primaryAction,primaryValue,secondarybutton,secondaryValue,secondaryAction }) => {
+const Modal: React.FC<ModalProps> = ({  onClose, children,title, classname,primarybutton,primaryAction,primaryValue,secondarybutton,secondaryValue,secondaryAction }) => {
     const modalRef = useRef<HTMLDivElement>(null);
 
     const handleClickOutside = (event: React.MouseEvent) => {
@@ -25,7 +24,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children,title, classnam
         }
     };
 
-    if (!isOpen) return null;
+   
 
     return (
         <div
@@ -38,10 +37,12 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children,title, classnam
             >
                 <div className='flex-1'>
                     {title && 
-                    <div className="flex py-[12px] items-center gap-[6px] cursor-pointer" onClick={onClose}>
+                    <div className="flex py-[12px] items-center gap-[6px] " >
+                        <div className='flex cursor-pointer' onClick={onClose}>
                         <ChevronLeftIcon />
                         <div className="font-bold text-lg" >
                             {title}
+                        </div>
                         </div>
                     </div>}
                     {children}

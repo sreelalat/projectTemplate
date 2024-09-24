@@ -15,7 +15,7 @@ export const HomeIcon = ({fill}:IconProps) => {
 }
 
 
-export const SmsIcon = ({fill}:IconProps) => {
+export const ChannelIcon = ({fill}:IconProps) => {
     return (
         <div>
             <svg width="28" height="29" viewBox="0 0 28 29" fill="none" xmlns="http://www.w3.org/2000/svg">

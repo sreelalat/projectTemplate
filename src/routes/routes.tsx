@@ -15,19 +15,24 @@ export const router = createBrowserRouter([
         element: <h1>Hello World</h1>,
       },
       {
-        path: "/contactList",
+        path: "contactlist/:contactlistId?", // Remove leading slash
         element: <ContactList />,
+        // children: [
+        //   {
+        //     path: ":contactlistId", // Change to relative path
+        //     element: <ContactList/>
+        //   },
+          
+        // ]
       },
       {
-        path: "/home",
+        path: "home", // Remove leading slash
         element: <h1>Home</h1>,
       },
     ],
   },
   {
-    path:"/components",
-    element:<Components/>
+    path: "components", // Remove leading slash
+    element: <Components />,
   }
 ]);
-
-
